@@ -1,4 +1,7 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:islame/cachHelper/cachData.dart';
 import 'package:islame/homeScreen.dart';
 import 'package:islame/quran_fragmant/suraDetailsFragment.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +10,9 @@ import 'ahadeth_fragment/ahadethDetailsFragment.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() {
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  CachData.initalizeCach();
   runApp( ChangeNotifierProvider(
     create: (context){
       return AppProvider();

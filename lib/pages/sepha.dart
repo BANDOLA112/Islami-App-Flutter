@@ -11,12 +11,21 @@ class Sepha extends StatefulWidget {
 
 class _SephaState extends State<Sepha> {
   int counter=0;
-  String title='';
+  int count=0;
+  List<String> titles=['سبحان الله','الحمد لله','الله اكبر','لا الاه الا الله'];
+  String title='سبحان الله';
+  void changeTitle(){
+    if (count==3&& counter==5){
+      counter=0;
+      count=0;
+    }
+    title=titles[count];
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    changTitle();
+    if(counter==5){
+      count+=1;
+      title=titles[count];
+      counter=0;
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -26,16 +35,23 @@ class _SephaState extends State<Sepha> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            InkWell(
-              onTap: () {
-                counter++;
+             Container(
 
-                setState(() {});
-              },
-                child: Container(
-                    child: Image(image: AssetImage('assets/images/logo2.png'))
-                )
-            ),
+                      child: Column(
+                        children: [
+                          Image(image: AssetImage('assets/images/head of seb7a.png')),
+                          InkWell(
+                              onTap: () {
+                                changeTitle();
+                                counter++;
+
+                                setState(() {});
+                              },
+                              child: Image(image: AssetImage('assets/images/body of seb7a.png'))
+                          ),
+                        ],
+                      ),
+                ),
             SizedBox(height: 30,),
             Container(
               decoration: BoxDecoration(
@@ -69,13 +85,5 @@ class _SephaState extends State<Sepha> {
       ),
     );
   }
-  void  changTitle(){
-    List<String> titles=['سبحان الله','الحمد لله','الله اكبر','لا الاه الا الله'];
-    for(int i=0;i<4;i++){
-        title=titles[i];
-      if (counter==5){
-        counter=0;
-      }
-    }
   }
-}
+

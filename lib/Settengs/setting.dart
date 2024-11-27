@@ -29,8 +29,8 @@ class _SettingState extends State<Setting> {
               },
               child: Container(
                 padding: EdgeInsets.all(10),
-                alignment: Alignment.centerLeft,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Row(
                         children: [
@@ -73,11 +73,9 @@ class _SettingState extends State<Setting> {
 
   BottomsCreator(){
     return Container(
-      height: 500,
+      height: 400,
       padding: EdgeInsets.all(15),
-      child: Center(
-          child:Languagesheet()
-      ),
-    );
+      child: Languagesheet()
+      );
   }
 }
